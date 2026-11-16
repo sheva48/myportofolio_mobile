@@ -66,7 +66,6 @@ class MyHomePage extends StatelessWidget {
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
                       crossAxisCount: 3,
-                      // Beri ruang teks saat tiga kolom menyempit di ponsel kecil.
                       mainAxisExtent: MediaQuery.sizeOf(context).width < 400
                           ? 136
                           : null,
