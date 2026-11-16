@@ -1,36 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myportofolio_mobile/main.dart';
+import 'package:myportofolio_mobile/menu.dart';
 
 void main() {
-  testWidgets('Menu Burhan menampilkan identitas dan pesan setiap tombol', (
-    WidgetTester tester,
-  ) async {
-    tester.view.physicalSize = const Size(432, 800);
-    tester.view.devicePixelRatio = 1;
-    addTearDown(tester.view.resetPhysicalSize);
-    addTearDown(tester.view.resetDevicePixelRatio);
+  testWidgets(
+    'Menu Sheva menampilkan identitas, warna, dan pesan setiap tombol',
+    (WidgetTester tester) async {
+      tester.view.physicalSize = const Size(432, 800);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
 
-    await tester.pumpWidget(const MyApp());
+      await tester.pumpWidget(const MyApp());
 
-    for (final label in [
-      'MyPortfolio',
-      '2406000001',
-      'Burhan',
-      'PBP A',
-      'Selamat datang di MyPortfolio Mobile!',
-    ]) {
-      expect(find.text(label), findsOneWidget);
-    }
+      for (final label in [
+        'MyPortfolio',
+        '2506622033',
+        'Sheva Aquila Mahardika',
+        'PBP A',
+        'Selamat datang di MyPortfolio Mobile!',
+      ]) {
+        expect(find.text(label), findsOneWidget);
+      }
 
-    for (final action in ['Lihat Proyek', 'Tambah Proyek', 'Logout']) {
-      await tester.tap(find.text(action));
-      await tester.pumpAndSettle();
-      expect(find.text('Kamu telah menekan tombol $action!'), findsOneWidget);
-      expect(find.byType(SnackBar), findsOneWidget);
-      expect(tester.takeException(), isNull);
-    }
-  });
+      final actionColors = {
+        'Lihat Proyek': Colors.blue.shade700,
+        'Tambah Proyek': Colors.green.shade700,
+        'Logout': Colors.red.shade700,
+      };
+
+      for (final entry in actionColors.entries) {
+        final action = entry.key;
+        final cardMaterial = tester.widget<Material>(
+          find.descendant(
+            of: find.widgetWithText(ItemCard, action),
+            matching: find.byType(Material),
+          ),
+        );
+        expect(cardMaterial.color, entry.value);
+        await tester.tap(find.text(action));
+        await tester.pumpAndSettle();
+        expect(find.text('Kamu telah menekan tombol $action!'), findsOneWidget);
+        expect(find.byType(SnackBar), findsOneWidget);
+        expect(tester.takeException(), isNull);
+      }
+    },
+  );
 
   for (final size in [
     const Size(320, 568),
