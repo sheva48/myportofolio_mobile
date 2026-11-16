@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
-  final String npm = '2406000001';
-  final String nama = 'Burhan';
+  final String npm = '2506622033';
+  final String nama = 'Sheva Aquila Mahardika';
   final String kelas = 'PBP A';
 
   final List<ItemHomepage> items = [
@@ -102,7 +102,7 @@ class InfoCard extends StatelessWidget {
           children: [
             Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 8.0),
-            Text(content),
+            Text(content, textAlign: TextAlign.center),
           ],
         ),
       ),
