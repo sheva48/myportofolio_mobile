@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myportofolio_mobile/main.dart';
-import 'package:myportofolio_mobile/menu.dart';
+import 'package:myportofolio_mobile/screens/project_form.dart';
+import 'package:myportofolio_mobile/widgets/project_card.dart';
 
 void main() {
   testWidgets(
@@ -44,6 +45,14 @@ void main() {
         expect(find.text('Kamu telah menekan tombol $action!'), findsOneWidget);
         expect(find.byType(SnackBar), findsOneWidget);
         expect(tester.takeException(), isNull);
+        if (action == 'Tambah Proyek') {
+          expect(find.byType(ProjectFormPage), findsOneWidget);
+          final context = tester.element(find.byType(ProjectFormPage));
+          expect(Navigator.canPop(context), isTrue);
+          Navigator.pop(context);
+          await tester.pumpAndSettle();
+          expect(find.text('Sheva Aquila Mahardika'), findsOneWidget);
+        }
       }
     },
   );
