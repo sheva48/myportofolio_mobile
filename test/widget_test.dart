@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myportofolio_mobile/main.dart';
+import 'package:myportofolio_mobile/screens/certification_form.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
 import 'package:myportofolio_mobile/widgets/project_card.dart';
 
@@ -28,6 +29,7 @@ void main() {
       final actionColors = {
         'Lihat Proyek': Colors.blue.shade700,
         'Tambah Proyek': Colors.green.shade700,
+        'Tambah Sertifikasi': Colors.purple.shade700,
         'Logout': Colors.red.shade700,
       };
 
@@ -52,6 +54,10 @@ void main() {
           Navigator.pop(context);
           await tester.pumpAndSettle();
           expect(find.text('Sheva Aquila Mahardika'), findsOneWidget);
+        } else if (action == 'Tambah Sertifikasi') {
+          expect(find.byType(CertificationFormPage), findsOneWidget);
+          Navigator.pop(tester.element(find.byType(CertificationFormPage)));
+          await tester.pumpAndSettle();
         }
       }
     },
