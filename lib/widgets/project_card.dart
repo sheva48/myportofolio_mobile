@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myportofolio_mobile/screens/certification_form.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
 
@@ -27,6 +28,13 @@ class ItemCard extends StatelessWidget {
               context,
               MaterialPageRoute<void>(
                 builder: (context) => const ProjectFormPage(),
+              ),
+            );
+          } else if (item.name == 'Tambah Sertifikasi') {
+            Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (context) => const CertificationFormPage(),
               ),
             );
           }

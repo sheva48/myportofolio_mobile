@@ -12,6 +12,7 @@ class MyHomePage extends StatelessWidget {
   final List<ItemHomepage> items = [
     ItemHomepage('Lihat Proyek', Icons.folder, Colors.blue.shade700),
     ItemHomepage('Tambah Proyek', Icons.add_circle, Colors.green.shade700),
+    ItemHomepage('Tambah Sertifikasi', Icons.verified, Colors.purple.shade700),
     ItemHomepage('Logout', Icons.logout, Colors.red.shade700),
   ];
 
@@ -69,8 +70,10 @@ class MyHomePage extends StatelessWidget {
                       padding: const EdgeInsets.all(20),
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
-                      crossAxisCount: 3,
-                      mainAxisExtent: MediaQuery.sizeOf(context).width < 400
+                      crossAxisCount: MediaQuery.sizeOf(context).width < 600
+                          ? 2
+                          : 3,
+                      mainAxisExtent: MediaQuery.sizeOf(context).width < 600
                           ? 136
                           : null,
                       shrinkWrap: true,
