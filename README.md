@@ -74,3 +74,30 @@ Untuk Tugas 7 saya memakai AI (Codex) buat membantu men guide dan menulis peruba
 Contoh prompt yang saya gunakan:
 
 - tolong kasih opsi pengerjaan nya mau pakai method yang kayak gimana biar mudah di kerjakan
+
+
+
+
+### Tugas 8
+
+
+1. `Navigator.push()` menambahkan halaman baru ke tumpukan navigasi, sehingga pengguna bisa kembali ke halaman sebelumnya. `Navigator.pushReplacement()` mengganti halaman aktif, sedangkan `Navigator.pop()` menutup halaman paling atas. Kartu **Tambah Sertifikasi** menggunakan `Navigator.push()`. Pada opsi **Home** di drawer, `Navigator.pop()` menutup drawer terlebih dahulu, lalu `Navigator.pushReplacement()` mengganti halaman formulir dengan `MyHomePage`.
+
+2. `Scaffold` menyediakan struktur dasar halaman, `AppBar` menampilkan judul dan akses drawer, sedangkan `Drawer` menyediakan menu navigasi yang sama antarhalaman. Contohnya, AppBar halaman utama dan formulir sertifikasi sama-sama menggunakan `Theme.of(context).colorScheme.primary`, sehingga warna tema indigo tetap konsisten.
+
+3. Formulir menggunakan `Column` agar input tersusun vertikal dan mudah diisi. `Padding` memberi jarak dari tepi layar, sedangkan `SizedBox` memberi jarak antarinput dan tombol. `SingleChildScrollView` memungkinkan formulir digulir saat layar sempit atau keyboard muncul, sehingga tombol **Simpan** tetap dapat dijangkau. `SafeArea` menjaga isi halaman dari area sistem perangkat.
+
+4. `GlobalKey<FormState>` digunakan untuk mengakses keadaan formulir. Saat **Simpan** ditekan, `validate()` menjalankan `validator` setiap kolom. Jika semuanya valid, isian disimpan melalui `save()` dan ditampilkan dalam dialog. Contohnya, `example.com` ditolak karena URL kredensial harus menggunakan `http://` atau `https://`. Papan ketik URL hanya mempermudah pengetikan; pengguna tetap bisa mengetik atau menempelkan nilai yang salah, sehingga validasi tetap diperlukan.
+
+
+
+**AI Disclosure**
+
+
+Saya menggunakan ChatGPT untuk membantu memahami konsep navigasi Flutter, struktur halaman, validasi formulir, dan dialog ringkasan. AI juga membantu menyusun implementasi formulir sertifikasi serta pengujiannya. Penjelasan konsep digunakan sebagai pendamping untuk memahami alur kode yang diterapkan
+
+Contoh prompt yang saya gunakan:
+
+- “Apa perbedaan Navigator.push(), pushReplacement(), dan pop()? Kapan masing-masing digunakan?”
+- “Bagaimana hubungan GlobalKey<FormState>, validator, dan validate() dalam validasi formulir Flutter?”
+- “Mengapa formulir perlu menggunakan SingleChildScrollView saat layar sempit atau keyboard muncul?”
