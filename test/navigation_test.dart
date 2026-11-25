@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myportofolio_mobile/main.dart';
+
+import 'test_helpers.dart';
+
 import 'package:myportofolio_mobile/screens/certification_form.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
@@ -9,7 +11,7 @@ void main() {
   testWidgets('Kartu sertifikasi membuka form dan mendukung tombol kembali', (
     tester,
   ) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(testApp(MyHomePage(), loggedIn: true));
     await tester.ensureVisible(find.text('Tambah Sertifikasi'));
     await tester.tap(find.text('Tambah Sertifikasi'));
     await tester.pumpAndSettle();
@@ -27,7 +29,7 @@ void main() {
   testWidgets('Drawer membuka sertifikasi, Home, dan Add Project', (
     tester,
   ) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(testApp(MyHomePage(), loggedIn: true));
     for (final destination in ['Home', 'Add Project']) {
       await tester.tap(find.byTooltip('Open navigation menu'));
       await tester.pumpAndSettle();
@@ -51,7 +53,7 @@ void main() {
   });
 
   testWidgets('Drawer mengganti halaman tanpa menumpuk route', (tester) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(testApp(MyHomePage(), loggedIn: true));
 
     for (var i = 0; i < 2; i++) {
       await tester.tap(find.byTooltip('Open navigation menu'));

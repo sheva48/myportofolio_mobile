@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myportofolio_mobile/screens/certification_form.dart';
 
+import 'test_helpers.dart';
+
 Future<void> submit(WidgetTester tester) async {
   final button = find.widgetWithText(ElevatedButton, 'Simpan');
   await tester.ensureVisible(button);
@@ -27,7 +29,7 @@ void main() {
   testWidgets('Menolak kolom kosong, spasi, panjang berlebih, dan URL salah', (
     tester,
   ) async {
-    await tester.pumpWidget(const MaterialApp(home: CertificationFormPage()));
+    await tester.pumpWidget(testApp(const CertificationFormPage()));
     for (final value in ['', '   ']) {
       await fillForm(tester, name: value, issuer: value, url: value);
       await submit(tester);
@@ -71,7 +73,7 @@ void main() {
   testWidgets('Dialog menampilkan isian terbaru dan Tutup kembali ke form', (
     tester,
   ) async {
-    await tester.pumpWidget(const MaterialApp(home: CertificationFormPage()));
+    await tester.pumpWidget(testApp(const CertificationFormPage()));
     await fillForm(
       tester,
       name: ' Flutter Dasar ',
@@ -103,7 +105,7 @@ void main() {
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
     addTearDown(tester.view.resetViewInsets);
-    await tester.pumpWidget(const MaterialApp(home: CertificationFormPage()));
+    await tester.pumpWidget(testApp(const CertificationFormPage()));
     await fillForm(tester);
     tester.view.viewInsets = const FakeViewPadding(bottom: 280);
     await tester.pumpAndSettle();
